@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" href="css/lib/bootstrap/bootstrap-3.1.1.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body ng-controller="global">
+<div class="navbar navbar-inverse navbar-fixed-top ng-scope">
+  <div class="page-header">
+    <div class="logo pull-left">
+      <a class="navbar-brand" ui-sref="home" mean-token="'site-title'">Find Wine</a>
+    </div>
+
+    <div class="left pull-left">
+      <ul class="navbar-nav nav">
+        <li data-ng-repeat="item in menus.main" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+          <a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="account">
+      <div class="text-edit">
+        <div class="pull-right" data-ng-show="global.authenticated" mean-token-editable></div>
+        <div class="pull-right" data-ng-show="global.authenticated" mean-translate></div>
+      </div>
+      <!--<ul class="navbar-nav nav" data-ng-hide="global.authenticated">
+        <li><a ui-sref='auth.register'>Register</a>
+        </li>
+        <li class="divider-vertical"></li>
+        <li><a ui-sref='auth.login'>Login</a>
+        </li>
+      </ul>-->
+      <ul class="navbar-nav nav" data-ng-show="global.authenticated">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            {{global.user.name}} <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/logout">Sign out</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!--<form class="search-form form-search form-inline" ng-submit="search()">
+        <div class="form-group">
+          <input type="text" class="input-medium search-query form-control inline" placeholder="Search (Ex: Merlot)" />
+          <button class="btn btn-default inline">Search</button>
+        </div>
+      </form>-->
+    </div>
+  </div>
+</div>
+
+<div class="filters">
+  <h3>Filter Results</h3>
+  <h4>Wine Type</h4>
+  <div class="wine-type"></div>
+  <h4>Price Range</h4>
+  <div class="price-range">
+    <div class="range-value"><span class="range-min"><strong>Min:</strong></span> to <strong>Max:</strong></div>
+    <div class="range-slider"></div>
+    <input type="hidden" class="range-min" />
+    <input type="hidden" class="range-max" />
+  </div>
+  <h4>Regions</h4>
+  <div class="regions"></div>
+</div>
+
+  <div ng-view class="content"></div>
+
+  <footer data-role="footer"><p>Copyright &copy;2014 FindWine.us, all rights reserved.  <a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a> | * All prices are subject to change without notice.</p></footer>
+
+  <script src="js/lib/jquery/jquery-1.11.1.min.js"></script>
+  <script src="js/lib/jquery-ui/jquery.ui-1.11.0.min.js"></script>
+  <script src="js/lib/bootstrap/bootstrap.min.js"></script>
+  <script src="js/lib/angular/angular-min.js"></script>
+  <script src="js/lib/angular/angular-route.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+
+</body>
+</html>
