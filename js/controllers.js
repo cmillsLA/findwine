@@ -50,7 +50,14 @@ angular.module('myApp.controllers', [])
       });
     };
 
-    $scope.buildFilters = function(results) {
+    $scope.buildFilters = function(results, showTypes) {
+      if(!showTypes) {
+        $('.wine-type').hide();
+        $('.h4-wine-type').hide();
+      } else {
+        $('.wine-type').show();
+        $('.h4-wine-type').show();
+      }
       $('.wine-type').html('');
       var wineTypes = [];
       var priceMin = 0;
@@ -107,7 +114,7 @@ angular.module('myApp.controllers', [])
       $('.range-max').val(priceMax);
     };
 
-    $scope.displayWines = function(results) {
+    $scope.displayWines = function(results, showTypes) {
       angular.forEach(results, function(result, key) {
         var wine = '<div class="result" data-id="' + result.Id + '">';
         wine += '<div class="result-label"><a href=' + result.Url + '><img src="' + result.Labels[0].Url + '" alt="" border="0" /></a></div>';
@@ -119,137 +126,60 @@ angular.module('myApp.controllers', [])
       $('.results-loader').hide();
       $('.filters').show();
       $('.results-content').fadeIn(250);
-      $scope.buildFilters(results);
+      $scope.buildFilters(results, showTypes);
+    };
+
+    $scope.init = function(cat, subcat) {
+      if(cat && subcat) {
+        // Subcategory.
+        var url = 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(' + cat + '+' + subcat + ')&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0';
+        var showWineTypes = false;
+      } else {
+        // Category.
+        var url = 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0';
+        var showWineTypes = true;
+      }
+      $http({method: 'GET', url: url }).
+        success(function(data, status, headers, config) {
+          var _results = data.Products.List;
+          // Save wines locally for faster filtering
+          localStorage.setItem('wines', JSON.stringify(_results));
+          $scope.displayWines(_results, showWineTypes);
+        }).
+        error(function(data, status, headers, config) {
+          $('.results-content').html('There was a problem with your request, please try again.');
+          $('.results-loader').remove();
+          //$scope.results = 'There was a problem with your request, please try again.';
+        });
     };
 
   }])
   .controller('cabernet', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
-    $scope.init = function() {
-      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
-        success(function(data, status, headers, config) {
-          var _results = data.Products.List;
-          // Save wines locally for faster filtering
-          localStorage.setItem('wines', JSON.stringify(_results));
-          $scope.displayWines(_results);
-        }).
-        error(function(data, status, headers, config) {
-          $('.results-content').html('There was a problem with your request, please try again.');
-          $('.results-loader').remove();
-          //$scope.results = 'There was a problem with your request, please try again.';
-          console.log('error');
-        });
-    };
-
-    $scope.init();
-
+    $scope.init(101, 139);
 
   }])
   .controller('chardonnay', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
-    $scope.init = function() {
-      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
-        success(function(data, status, headers, config) {
-          var _results = data.Products.List;
-          // Save wines locally for faster filtering
-          localStorage.setItem('wines', JSON.stringify(_results));
-          $scope.displayWines(_results);
-        }).
-        error(function(data, status, headers, config) {
-          $('.results-content').html('There was a problem with your request, please try again.');
-          $('.results-loader').remove();
-          //$scope.results = 'There was a problem with your request, please try again.';
-          console.log('error');
-        });
-    };
-
-    $scope.init();
-
+    $scope.init(101, 140);
 
   }])
   .controller('pinot', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
-    $scope.init = function() {
-      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
-        success(function(data, status, headers, config) {
-          var _results = data.Products.List;
-          // Save wines locally for faster filtering
-          localStorage.setItem('wines', JSON.stringify(_results));
-          $scope.displayWines(_results);
-        }).
-        error(function(data, status, headers, config) {
-          $('.results-content').html('There was a problem with your request, please try again.');
-          $('.results-loader').remove();
-          //$scope.results = 'There was a problem with your request, please try again.';
-          console.log('error');
-        });
-    };
-
-    $scope.init();
-
+    $scope.init(101, 143);
 
   }])
   .controller('sauvignon', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
-    $scope.init = function() {
-      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
-        success(function(data, status, headers, config) {
-          var _results = data.Products.List;
-          // Save wines locally for faster filtering
-          localStorage.setItem('wines', JSON.stringify(_results));
-          $scope.displayWines(_results);
-        }).
-        error(function(data, status, headers, config) {
-          $('.results-content').html('There was a problem with your request, please try again.');
-          $('.results-loader').remove();
-          //$scope.results = 'There was a problem with your request, please try again.';
-          console.log('error');
-        });
-    };
-
-    $scope.init();
-
+    $scope.init(101, 151);
 
   }])
   .controller('syrah', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
-    $scope.init = function() {
-      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
-        success(function(data, status, headers, config) {
-          var _results = data.Products.List;
-          // Save wines locally for faster filtering
-          localStorage.setItem('wines', JSON.stringify(_results));
-          $scope.displayWines(_results);
-        }).
-        error(function(data, status, headers, config) {
-          $('.results-content').html('There was a problem with your request, please try again.');
-          $('.results-loader').remove();
-          //$scope.results = 'There was a problem with your request, please try again.';
-          console.log('error');
-        });
-    };
-
-    $scope.init();
-
+    $scope.init(101, 146);
 
   }])
   .controller('index', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
-
-    $scope.init = function() {
-      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
-        success(function(data, status, headers, config) {
-          var _results = data.Products.List;
-          // Save wines locally for faster filtering
-          localStorage.setItem('wines', JSON.stringify(_results));
-          $scope.displayWines(_results);
-        }).
-        error(function(data, status, headers, config) {
-          $('.results-content').html('There was a problem with your request, please try again.');
-          $('.results-loader').remove();
-          //$scope.results = 'There was a problem with your request, please try again.';
-          console.log('error');
-        });
-    };
 
     $scope.init();
 
