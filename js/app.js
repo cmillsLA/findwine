@@ -13,5 +13,7 @@ angular.module('myApp', [
     $routeProvider.when('/chardonnay/', {templateUrl: 'templates/chardonnay.html', controller: 'chardonnay'});
     $routeProvider.when('/syrah/', {templateUrl: 'templates/syrah.html', controller: 'syrah'});
     $routeProvider.when('/sauvignon-blanc/', {templateUrl: 'templates/sauvignon.html', controller: 'sauvignon'});
+    $routeProvider.when('/privacy-policy/', {templateUrl: 'templates/privacy.html', controller: 'privacy'});
+    $routeProvider.when('/terms-conditions/', {templateUrl: 'templates/terms.html', controller: 'terms'});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);

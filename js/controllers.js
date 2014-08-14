@@ -51,6 +51,7 @@ angular.module('myApp.controllers', [])
     };
 
     $scope.buildFilters = function(results, showTypes) {
+      $('.filters').show();
       if(!showTypes) {
         $('.wine-type').hide();
         $('.h4-wine-type').hide();
@@ -177,6 +178,16 @@ angular.module('myApp.controllers', [])
   .controller('syrah', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
     $scope.init(101, 146);
+
+  }])
+  .controller('privacy', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $('.filters').hide();
+
+  }])
+  .controller('terms', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $('.filters').hide();
 
   }])
   .controller('index', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
