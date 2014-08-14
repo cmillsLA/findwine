@@ -123,6 +123,116 @@ angular.module('myApp.controllers', [])
     };
 
   }])
+  .controller('cabernet', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $scope.init = function() {
+      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
+        success(function(data, status, headers, config) {
+          var _results = data.Products.List;
+          // Save wines locally for faster filtering
+          localStorage.setItem('wines', JSON.stringify(_results));
+          $scope.displayWines(_results);
+        }).
+        error(function(data, status, headers, config) {
+          $('.results-content').html('There was a problem with your request, please try again.');
+          $('.results-loader').remove();
+          //$scope.results = 'There was a problem with your request, please try again.';
+          console.log('error');
+        });
+    };
+
+    $scope.init();
+
+
+  }])
+  .controller('chardonnay', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $scope.init = function() {
+      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
+        success(function(data, status, headers, config) {
+          var _results = data.Products.List;
+          // Save wines locally for faster filtering
+          localStorage.setItem('wines', JSON.stringify(_results));
+          $scope.displayWines(_results);
+        }).
+        error(function(data, status, headers, config) {
+          $('.results-content').html('There was a problem with your request, please try again.');
+          $('.results-loader').remove();
+          //$scope.results = 'There was a problem with your request, please try again.';
+          console.log('error');
+        });
+    };
+
+    $scope.init();
+
+
+  }])
+  .controller('pinot', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $scope.init = function() {
+      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
+        success(function(data, status, headers, config) {
+          var _results = data.Products.List;
+          // Save wines locally for faster filtering
+          localStorage.setItem('wines', JSON.stringify(_results));
+          $scope.displayWines(_results);
+        }).
+        error(function(data, status, headers, config) {
+          $('.results-content').html('There was a problem with your request, please try again.');
+          $('.results-loader').remove();
+          //$scope.results = 'There was a problem with your request, please try again.';
+          console.log('error');
+        });
+    };
+
+    $scope.init();
+
+
+  }])
+  .controller('sauvignon', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $scope.init = function() {
+      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
+        success(function(data, status, headers, config) {
+          var _results = data.Products.List;
+          // Save wines locally for faster filtering
+          localStorage.setItem('wines', JSON.stringify(_results));
+          $scope.displayWines(_results);
+        }).
+        error(function(data, status, headers, config) {
+          $('.results-content').html('There was a problem with your request, please try again.');
+          $('.results-loader').remove();
+          //$scope.results = 'There was a problem with your request, please try again.';
+          console.log('error');
+        });
+    };
+
+    $scope.init();
+
+
+  }])
+  .controller('syrah', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
+
+    $scope.init = function() {
+      $http({method: 'GET', url: 'http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(101)&size=100&sortBy=popularity|descending&instock=true&apikey=24fd8a880d5f4549afe0e43f40dcd0c3&affiliateId=1LAPppeuuh0'}).
+        success(function(data, status, headers, config) {
+          var _results = data.Products.List;
+          // Save wines locally for faster filtering
+          localStorage.setItem('wines', JSON.stringify(_results));
+          $scope.displayWines(_results);
+        }).
+        error(function(data, status, headers, config) {
+          $('.results-content').html('There was a problem with your request, please try again.');
+          $('.results-loader').remove();
+          //$scope.results = 'There was a problem with your request, please try again.';
+          console.log('error');
+        });
+    };
+
+    $scope.init();
+
+
+  }])
   .controller('index', [ '$rootScope', '$scope', '$http', function($rootScope, $scope, $http) {
 
     $scope.init = function() {

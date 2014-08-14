@@ -8,6 +8,10 @@ angular.module('myApp', [
   ]).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {templateUrl: 'templates/index.html', controller: 'index'});
-    //$routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'login'});
+    $routeProvider.when('/cabernet-sauvignon', {templateUrl: 'templates/cabernet-sauvignon.html', controller: 'cabernet'});
+    $routeProvider.when('/pinot-noir', {templateUrl: 'templates/pinot-noir.html', controller: 'pinot'});
+    $routeProvider.when('/chardonnay', {templateUrl: 'templates/chardonnay.html', controller: 'chardonnay'});
+    $routeProvider.when('/syrah', {templateUrl: 'templates/syrah.html', controller: 'syrah'});
+    $routeProvider.when('/sauvignon-blanc', {templateUrl: 'templates/sauvignon-blanc.html', controller: 'sauvignon'});
     $routeProvider.otherwise({redirectTo: '/'});
   }]);

@@ -57,6 +57,21 @@ h4 {
     padding-top:19px;
     outline:none;
 }
+.navbar-nav > li > a,
+.nav-title {
+    padding-top:17px;
+    padding-bottom:13px;
+}
+.navbar-nav > li > a {
+    color:#fff !important;
+}
+.navbar-nav > li > a:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+.nav-title {
+    color:#af9696;
+    margin-right:10px;
+}
 .text-edit {
     padding: 13px 0 0 0;
 }
@@ -214,6 +229,9 @@ footer {
 }
 .inline {
     display:inline;
+}
+.mr20 {
+    margin-right:20px !important;
 }
 /* jQuery UI Slider */
 .ui-slider {

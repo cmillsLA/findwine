@@ -21,13 +21,19 @@
       <a class="navbar-brand" ui-sref="home" mean-token="'site-title'">Find Wine</a>
     </div>
 
-    <!--<div class="left pull-left">
+    <div class="left pull-right mr20">
+      <p class="inline"></p>
       <ul class="navbar-nav nav">
-        <li data-ng-repeat="item in menus.main" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-          <a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>
-        </li>
+        <li class="nav-title">Popular Varietals:</li>
+        <li><a ng-href="/cabernet-sauvignon">Cabernet Sauvignon</a></li>
+        <li><a ng-href="/pinot-noir">Pinot Noir</a></li>
+        <li><a ng-href="/chardonnay">Chardonnay</a></li>
+        <li><a ng-href="/syrah">Syrah / Shiraz</a></li>
+        <li><a ng-href="/sauvignon-blanc">Sauvignon-Blanc</a></li>
+        <!--<li><a href="/california-wine-club/">California Wine Club</a></li>-->
+        <!--<li><a href="/california-wine-gift-basket/">California Wine Gift Baskets</a></li>-->
       </ul>
-    </div>-->
+    </div>
 
       <!--<form class="search-form form-search form-inline" ng-submit="search()">
         <div class="form-group">
