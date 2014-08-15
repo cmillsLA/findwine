@@ -118,10 +118,10 @@ angular.module('myApp.controllers', [])
     $scope.displayWines = function(results, showTypes) {
       angular.forEach(results, function(result, key) {
         var wine = '<div class="result" data-id="' + result.Id + '">';
-        wine += '<div class="result-label"><a href=' + result.Url + '><img src="' + result.Labels[0].Url + '" alt="" border="0" /></a></div>';
-        wine += '<p class="result-name"><a href=' + result.Url + '>' + result.Name + '</a></p>';
+        wine += '<div class="result-label"><a href="' + result.Url + '&affiliateId=1LAPppeuuh0&id=1LAPppeuuh0"><img src="' + result.Labels[0].Url + '" alt="" border="0" /></a></div>';
+        wine += '<p class="result-name"><a href="' + result.Url + '&affiliateId=1LAPppeuuh0&id=1LAPppeuuh0">' + result.Name + '</a></p>';
         wine += '<p class="result-price">$' + result.PriceMax.toFixed(2) + '*</p>';
-        wine += '<a href=' + result.Url + ' class="btn btn-default">View</a>';
+        wine += '<a href="' + result.Url + '&affiliateId=1LAPppeuuh0&id=1LAPppeuuh0" class="btn btn-default">View</a>';
         $('.results-content').append(wine);
       });
       $('.results-loader').hide();
